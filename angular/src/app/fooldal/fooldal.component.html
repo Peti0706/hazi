@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Programozási Nyelvek</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                    <th>Leírás</th>
+                    <th>Kategória</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let nyelv of Nyelvek">
+                    <td>{{nyelv.id}}.</td>
+                    <td>{{nyelv.nev}}</td>
+                    <td style="text-align: justify;">{{nyelv.leiras}}</td>
+                    <td>{{nyelv.kategorianev}}</td>
+                    <td><button class="btn btn-sm btn-danger" (click)="deleteNyelvek(nyelv.id)">Törlés</button></td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <div class="form-section">
+            <form>
+                <div class="form-group">
+                    <label for="name">Név:</label>
+                    <input type="text" id="name" name="name" placeholder="Pl. C++" [(ngModel)]="ujnev">
+                </div>
+                <div class="form-group">
+                    <label for="description">Leírás:</label>
+                    <input type="text" id="description" name="description" placeholder="Rövid leírás" [(ngModel)]="ujleiras">
+                </div>
+                <div class="form-group">
+                    <label for="category">Kategória:</label>
+                    <input type="text" id="category" name="category" placeholder="Pl. Mobilfejlesztés" [(ngModel)]="ujkategoriaid">
+                </div>
+                
+                <button id="gomb" type="submit" (click)="postNyelvek()">Hozzáadás</button>
+                <h2 style="text-align: center;">{{this.uzenet}}</h2>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
